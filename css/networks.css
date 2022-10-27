@@ -1,4 +1,4 @@
-div {
+#htmlwidget_container {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -9,6 +9,3 @@ div {
   margin: 10px;
 }
 
-div+div {
-  border: 10px solid #969696;
-}
