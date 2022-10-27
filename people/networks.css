@@ -7,6 +7,7 @@ border-style: solid;
 #hp  {
 float: right;    
  margin: 0 0 0 15px;
+	border-style: solid;
 }
 
 img {border-style: solid;}
