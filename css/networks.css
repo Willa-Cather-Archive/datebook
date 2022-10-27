@@ -1,0 +1,14 @@
+div {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  width: 120px;
+  height: 120px;
+  border: 20px solid #969696;
+  background: #d9dbda;
+  margin: 10px;
+}
+
+div+div {
+  border: 10px solid #969696;
+}
