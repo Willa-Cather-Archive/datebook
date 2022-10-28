@@ -5,5 +5,9 @@ border-style: solid;
 #hp  {
 border-style: solid;
 border-color: teal;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
 
 }
