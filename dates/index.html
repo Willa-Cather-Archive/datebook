@@ -18,6 +18,29 @@
     <!-- Font Awesome Icons css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js">
+    </script>
+    <script type="text/javascript" src="datebook_dates.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+    <style>
+      .subdomain-text {
+        fill: black;
+      }
+      #letter-table {
+        height: 2000px;
+      }
+      
+      #onClickResults {
+        padding: 0em 0em 0.5em 0em;
+        position: sticky;
+        top: 70px;
+        height: 500px;
+        overflow-x: visible;
+        overflow-y: scroll;
+      }
+    </style>
+
   </head>
 
   <body>
@@ -61,11 +84,18 @@
     
         <div class="container">
           <div class="row">
-            <div class="col-md-12">
-            <h1>Dates </h1>
+            <div class="col-md-6">
+              <h1>Dates</h1>
+                <div id="cal-heatmap1"></div>
+                <div id="cal-heatmap2"></div>
+                <div id="cal-heatmap3"></div>
+              </div>
+            <div class="col-md-6" id="letter-table">
+                <div id="onClickResults"><h3>Click Any Date to View Letter Details</h3></div>
               </div>
             </div>
             <hr>  
+
           </div>
 
     </main>
@@ -83,5 +113,108 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+var padTo2Digits = function(num) {
+  var mystr = num.toString().padStart(2, '0');
+  return mystr;
+  }
+
+var formatDate = function(date) {
+  var result = [ padTo2Digits(date.getMonth() + 1), padTo2Digits(date.getDate()), 
+  date.getFullYear()].join('-');
+  return result;
+}
+
+var info = function(date, nb) {
+    var d = formatDate(date);
+    var table_data = ["<h3>Click Any Date to View Letter Details</h3><table class='table table-striped'><thead><tr><th>Letter ID</th><th>Date Type</th><th>Unit or Text</th><th>Precision</th><th>Date(s)</th><th>Link</th></tr></thead><tbody>",]
+    
+    for (i in mydata[d].data) {
+      table_data.push(mydata[d].data[i][5])
+    }
+    full_html = table_data.join('');
+    full_html = full_html + "</tbody></table>"
+    $("#onClickResults").html(full_html);
+  }
+
+var parser = function(data) {
+  var stats = {};
+  for (var d in data) {
+    stats[data[d].timestamp] = data[d].count;
+      }
+  return stats;
+  };
+
+  var cal1 = new CalHeatMap();
+  cal1.init({
+  itemSelector: "#cal-heatmap1",
+  domain: "month",
+  subDomain: "x_day",
+  cellSize: 50, subDomainTextFormat: "%d",
+  cellPadding: 5,
+  range: 1,
+  start: new Date(1922, 9, 1),
+  data: mydata,
+  afterLoadData: parser,
+  legend: [1, 2, 3, 4],
+  legendColors: {
+    min: "#efefef",
+    max: "steelblue",
+    empty: "#F8F0E3"
+  },
+  displayLegend: false,
+  onClick: info,
+  // data can refer to a variable name but then we need afterLoadData: parser where parser is a function that produces the proper format
+});
+
+  var cal2 = new CalHeatMap();
+  cal2.init({
+  itemSelector: "#cal-heatmap2",
+  domain: "month",
+  subDomain: "x_day",
+  cellSize: 50, subDomainTextFormat: "%d",
+  cellPadding: 5,
+  range: 1,
+  start: new Date(1922, 10, 1),
+  data: mydata,
+  afterLoadData: parser,
+  legend: [1, 2, 3, 4],
+  legendColors: {
+    min: "#efefef",
+    max: "steelblue",
+    empty: "#F8F0E3"
+  },
+  displayLegend: false,
+  onClick: info,
+  // data can refer to a variable name but then we need afterLoadData: parser where parser is a function that produces the proper format
+});
+
+  var cal3 = new CalHeatMap();
+  cal3.init({
+  itemSelector: "#cal-heatmap3",
+  domain: "month",
+  subDomain: "x_day",
+  cellSize: 50, subDomainTextFormat: "%d",
+  cellPadding: 5,
+  range: 1,
+  start: new Date(1922, 11, 1),
+  data: mydata,
+  afterLoadData: parser,
+  legend: [1, 2, 3, 4],
+  legendColors: {
+    min: "#efefef",
+    max: "steelblue",
+    empty: "#F8F0E3"
+  },
+  displayLegend: false, 
+  onClick: info,
+  // data can refer to a variable name but then we need afterLoadData: parser where parser is a function that produces the proper format
+});
+
+</script>
+
   </body>
 </html>
