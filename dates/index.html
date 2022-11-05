@@ -141,9 +141,8 @@ var info = function(date, nb) {
   }
 
 var parser = function(data) {
-  var today = new Date()
-  var offset = today.getTimezoneOffset() * 60;
-  console.log(today, offset);
+  var offset = new Date().getTimezoneOffset() * 60;
+  console.log(offset)
   var stats = {};
   for (var d in data) {
     var timestamp = parseInt(data[d].timestamp, 10);
