@@ -141,9 +141,12 @@ var info = function(date, nb) {
   }
 
 var parser = function(data) {
+  var offset = new Date().getTimezoneOffset() * 60
   var stats = {};
   for (var d in data) {
-    stats[data[d].timestamp] = data[d].count;
+    var timestamp = parseInt(data[d].timestamp, 10);
+    var timestamp_offset = timestamp + offset
+    stats[timestamp] = data[d].count;
       }
   return stats;
   };
