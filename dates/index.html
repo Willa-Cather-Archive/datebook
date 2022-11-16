@@ -87,7 +87,7 @@
 
         <div class="container">
           <div class="row"><h1>Exploring Dates in Cather's Letters</h1>
-            <p>The goal of this section of the Datebook app is to find refernces to particular dates whether precisely described or inferred based on context, and display these references as a "calendar heatmap." With this kind of  visualization, each day in a monthyl calendar view is shaded to correspond with the number of letters and letters references anchored to that date.</p> 
+            <p>The goal of this section of the Datebook app is to find refernces to particular dates whether precisely described or inferred based on context, and display these references as a "calendar heatmap." With this kind of  visualization, each day in a monthy calendar view is shaded to correspond with the number of letters and letters references anchored to that date.</p> 
             <p>We chose to display a calendar of letter dates (and date ranges for letters without precise dates), as well as explicit and implicit date mentions between October 1, 1922 and December 31, 1922. Based on current evidence, there are more Cather letters representing this three-month period than any other three-month interval in Cather's life. Our feeling was that focusing on this date range would allow us to display a rich example of how many days of Cather's life can be accounted for based on descriptions in her letters but also, how many specific days are still unaccounted for even in this period of very high letter frequency.</p> 
             <p>Computational methods tend to perform well on this kind of "Named Entity Recognition" (NER), but they are far from perfect. To represent date mentions in our Datebook app, we employed a pre-trained NER model (using the Spacy library in Python) to isolate date and time mentions, then used a series of conditional rules to categorize those mentions and align them with particular dates. Lastly, we hand checked and corrected ambiguous date references.</p>
         </div>
@@ -117,6 +117,7 @@
           </div>
 
     </main>
+    
   
     <footer class="container"><div class="row">
       <div class="col-md-12"><p>This website's content is available under the <a href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 Unported (CC BY-NC 4.0)</a>, which provides users the right to "copy and redistribute the material in any medium or format" or "remix, transform, and build upon the material" and "remix, transform, and build upon the material," provided that the usage gives appropriate credit, provides a link to the license, and indicates if changes were made. The NonCommercial aspect of this license means that you may not use the material for any commercial purposes. </p></div>
